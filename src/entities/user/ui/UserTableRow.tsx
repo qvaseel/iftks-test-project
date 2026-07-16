@@ -1,6 +1,5 @@
-import type { User } from "@/entities/user";
 import type { ReactNode } from "react";
-import type { UserTableColumnKey } from "../model";
+import type { User, UserTableColumnKey } from "../model";
 import { USER_TABLE_COLUMNS } from "../config";
 
 interface UserTableRowProps {

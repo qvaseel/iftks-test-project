@@ -1,9 +1,12 @@
 import { observer } from "mobx-react-lite";
 import { useStore } from "@/app/store/useStore";
 import { ErrorMessage, Pagination, Spinner } from "@/shared/ui";
-import { UserTableHeader } from "./UserTableHeader";
-import { UserTableRow } from "./UserTableRow";
-import { USER_TABLE_COLUMNS, USER_TABLE_INITIAL_WIDTH } from "../config";
+import {
+  USER_TABLE_COLUMNS,
+  USER_TABLE_INITIAL_WIDTH,
+  UserTableRow,
+} from "@/entities/user";
+import { UserSortingRow } from "@/features/user/sorting";
 
 export const UserTableWidget = observer(() => {
   const { usersTableStore } = useStore();
@@ -61,7 +64,14 @@ export const UserTableWidget = observer(() => {
             ))}
           </colgroup>
 
-          <UserTableHeader />
+          <thead>
+            <UserSortingRow
+              columns={USER_TABLE_COLUMNS}
+              sortField={usersTableStore.sortField}
+              sortOrder={usersTableStore.sortOrder}
+              onSort={usersTableStore.setSorting}
+            />
+          </thead>
 
           <tbody>
             {usersTableStore.users.map((user) => (

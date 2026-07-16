@@ -10,6 +10,11 @@
       "email": "Email",
       "country": "Страна",
       "city": "Город"
+    },
+    "sorting": {
+      "ascending": "Сортировать {{column}} по возрастанию",
+      "descending": "Сортировать {{column}} по убыванию",
+      "clear": "Убрать сортировку {{column}}"
     }
   }
 }
