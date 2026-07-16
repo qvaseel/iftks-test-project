@@ -39,7 +39,12 @@ export type UsersFilterField =
   | "address.country"
   | "address.city";
 
-export type SortOrder = "asc" | "desc";
+export type SortOrder = "asc" | "desc" | null;
+
+export interface ActiveFilter {
+  key: UsersFilterField;
+  value: string;
+}
 
 export interface GetUsersResponse {
   users: User[];
