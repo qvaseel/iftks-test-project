@@ -1,5 +1,15 @@
-function App() {
-  return <></>;
-}
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { UserTablePage } from "@/pages/user";
+import { MainLayout } from "./layouts/MainLayout";
 
-export default App;
+export function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<UserTablePage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
