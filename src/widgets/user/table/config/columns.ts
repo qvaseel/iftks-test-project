@@ -1,0 +1,87 @@
+import type { UserTableColumn } from "../model";
+
+export const USER_TABLE_COLUMNS: UserTableColumn[] = [
+  {
+    key: "lastName",
+    titleKey: "users.columns.lastName",
+    initialWidth: 150,
+    minWidth: 50,
+    sortField: "lastName",
+    filterField: "lastName",
+    filterType: "text",
+  },
+  {
+    key: "firstName",
+    titleKey: "users.columns.firstName",
+    initialWidth: 150,
+    minWidth: 50,
+    sortField: "firstName",
+    filterField: "firstName",
+    filterType: "text",
+  },
+  {
+    key: "maidenName",
+    titleKey: "users.columns.maidenName",
+    initialWidth: 150,
+    minWidth: 50,
+    sortField: "maidenName",
+    filterField: "maidenName",
+    filterType: "text",
+  },
+  {
+    key: "age",
+    titleKey: "users.columns.age",
+    initialWidth: 90,
+    minWidth: 50,
+    sortField: "age",
+    filterField: "age",
+    filterType: "number",
+  },
+  {
+    key: "gender",
+    titleKey: "users.columns.gender",
+    initialWidth: 110,
+    minWidth: 50,
+    sortField: "gender",
+    filterField: "gender",
+    filterType: "select",
+  },
+  {
+    key: "phone",
+    titleKey: "users.columns.phone",
+    initialWidth: 180,
+    minWidth: 50,
+    sortField: "phone",
+    filterField: "phone",
+    filterType: "text",
+  },
+  {
+    key: "email",
+    titleKey: "users.columns.email",
+    initialWidth: 240,
+    minWidth: 50,
+    filterField: "email",
+    filterType: "text",
+  },
+  {
+    key: "country",
+    titleKey: "users.columns.country",
+    initialWidth: 170,
+    minWidth: 50,
+    filterField: "address.country",
+    filterType: "text",
+  },
+  {
+    key: "city",
+    titleKey: "users.columns.city",
+    initialWidth: 150,
+    minWidth: 50,
+    filterField: "address.city",
+    filterType: "text",
+  },
+];
+
+export const USER_TABLE_INITIAL_WIDTH = USER_TABLE_COLUMNS.reduce(
+  (totalWidth, column) => totalWidth + column.initialWidth,
+  0,
+);

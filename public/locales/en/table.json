@@ -1,0 +1,15 @@
+{
+  "users": {
+    "columns": {
+      "lastName": "Last name",
+      "firstName": "First name",
+      "maidenName": "Maiden name",
+      "age": "Age",
+      "gender": "Gender",
+      "phone": "Phone",
+      "email": "Email",
+      "country": "Country",
+      "city": "City"
+    }
+  }
+}

@@ -1,7 +1,9 @@
 import { observer } from "mobx-react-lite";
-import { useStore } from "@/app/store";
-import { UsersTableRow } from "@/entities/user";
+import { useStore } from "@/app/store/useStore";
 import { ErrorMessage, Pagination, Spinner } from "@/shared/ui";
+import { UserTableHeader } from "./UserTableHeader";
+import { UserTableRow } from "./UserTableRow";
+import { USER_TABLE_COLUMNS, USER_TABLE_INITIAL_WIDTH } from "../config";
 
 export const UserTableWidget = observer(() => {
   const { usersTableStore } = useStore();
@@ -23,11 +25,9 @@ export const UserTableWidget = observer(() => {
     return (
       <div
         className="
-          flex min-h-40
-          items-center justify-center
-          rounded-lg border
-          border-slate-200 bg-white
-          p-6 text-slate-500
+          flex min-h-40 items-center justify-center
+          rounded-lg border border-slate-200
+          bg-white p-6 text-slate-500
         "
       >
         Пользователи не найдены
@@ -37,42 +37,40 @@ export const UserTableWidget = observer(() => {
 
   return (
     <div className="space-y-4">
-      {/* {usersTableStore.isLoading && (
+      {usersTableStore.isLoading && (
         <p className="text-center text-sm text-slate-500" role="status">
           Загрузка страницы...
         </p>
-      )} */}
+      )}
+
       <div className="overflow-x-auto rounded-lg border border-slate-200">
-        <table className="w-full border-collapse bg-white">
-          <thead className="bg-slate-100">
-            <tr>
-              <th className="px-3 py-3 text-left">Фамилия</th>
+        <table
+          className="w-full table-fixed border-collapse bg-white"
+          style={{
+            minWidth: USER_TABLE_INITIAL_WIDTH,
+          }}
+        >
+          <colgroup>
+            {USER_TABLE_COLUMNS.map((column) => (
+              <col
+                key={column.key}
+                style={{
+                  width: column.initialWidth,
+                }}
+              />
+            ))}
+          </colgroup>
 
-              <th className="px-3 py-3 text-left">Имя</th>
-
-              <th className="px-3 py-3 text-left">Отчество</th>
-
-              <th className="px-3 py-3 text-left">Возраст</th>
-
-              <th className="px-3 py-3 text-left">Пол</th>
-
-              <th className="px-3 py-3 text-left">Телефон</th>
-
-              <th className="px-3 py-3 text-left">Email</th>
-
-              <th className="px-3 py-3 text-left">Страна</th>
-
-              <th className="px-3 py-3 text-left">Город</th>
-            </tr>
-          </thead>
+          <UserTableHeader />
 
           <tbody>
             {usersTableStore.users.map((user) => (
-              <UsersTableRow key={user.id} user={user} />
+              <UserTableRow key={user.id} user={user} />
             ))}
           </tbody>
         </table>
       </div>
+
       <Pagination
         currentPage={usersTableStore.page}
         totalPages={usersTableStore.totalPages}

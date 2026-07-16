@@ -15,8 +15,6 @@ export interface User {
   email: string;
   phone: string;
   image: string;
-  height: number;
-  weight: number;
   address: UserAddress;
 }
 

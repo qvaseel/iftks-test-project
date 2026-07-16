@@ -1,0 +1,15 @@
+{
+  "users": {
+    "columns": {
+      "lastName": "Фамилия",
+      "firstName": "Имя",
+      "maidenName": "Отчество",
+      "age": "Возраст",
+      "gender": "Пол",
+      "phone": "Телефон",
+      "email": "Email",
+      "country": "Страна",
+      "city": "Город"
+    }
+  }
+}
