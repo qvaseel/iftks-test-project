@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserTablePage } from "@/pages/user";
 import { MainLayout } from "./layouts/MainLayout";
 
-export function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
