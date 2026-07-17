@@ -9,7 +9,8 @@
       "phone": "Phone",
       "email": "Email",
       "country": "Country",
-      "city": "City"
+      "city": "City",
+      "resize": "Resize {{column}} column"
     },
     "sorting": {
       "ascending": "Sort {{column}} ascending",

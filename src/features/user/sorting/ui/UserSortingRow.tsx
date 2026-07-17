@@ -1,25 +1,15 @@
 import { useTranslation } from "react-i18next";
-import type { SortOrder, UsersSortField } from "@/entities/user";
+import { ColumnHandleResize } from "@/entities/user";
 import { SortButton } from "@/shared/ui";
-
-interface SortingColumn {
-  key: string;
-  titleKey: string;
-  sortField?: UsersSortField;
-}
-
-interface UserSortingRowProps {
-  columns: SortingColumn[];
-  sortField: UsersSortField | null;
-  sortOrder: SortOrder | null;
-  onSort: (field: UsersSortField) => void;
-}
+import type { UserSortingRowProps } from "../model";
 
 export function UserSortingRow({
   columns,
   sortField,
   sortOrder,
   onSort,
+  onColumnResize,
+  columnWidths,
 }: UserSortingRowProps) {
   const { t } = useTranslation("user");
 
@@ -28,11 +18,16 @@ export function UserSortingRow({
       {columns.map((column) => {
         const title = t(column.titleKey);
 
+        const resizeLabel = t("users.columns.resize", {
+          column: title,
+        });
+
         return (
           <th
             key={column.key}
             scope="col"
             className="
+              relative
               border-b border-slate-200
               bg-slate-100
               px-3 py-3
@@ -52,6 +47,16 @@ export function UserSortingRow({
                   onSort={onSort}
                 />
               )}
+
+              <ColumnHandleResize
+                label={resizeLabel}
+                currentWidth={columnWidths[column.key]}
+                initialWidth={column.initialWidth}
+                minWidth={column.minWidth}
+                onResize={(width) => {
+                  onColumnResize(column.key, width);
+                }}
+              />
             </div>
           </th>
         );

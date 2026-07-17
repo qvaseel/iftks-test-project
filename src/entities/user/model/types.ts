@@ -84,3 +84,19 @@ export interface UserTableColumn {
   filterField?: UsersFilterField;
   filterType?: UserTableFilterType;
 }
+
+export type UserTableColumnWidths = Record<UserTableColumnKey, number>;
+
+export interface ColumnHandleResizeProps {
+  label: string;
+  currentWidth: number;
+  initialWidth: number;
+  minWidth: number;
+  onResize: (width: number) => void;
+}
+
+export interface ResizeState {
+  isResizing: boolean;
+  startX: number;
+  startWidth: number;
+}

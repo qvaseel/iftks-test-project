@@ -1,4 +1,4 @@
-import type { UserTableColumn } from "../model";
+import type { UserTableColumn, UserTableColumnWidths } from "../model";
 
 export const USER_TABLE_COLUMNS: UserTableColumn[] = [
   {
@@ -81,7 +81,15 @@ export const USER_TABLE_COLUMNS: UserTableColumn[] = [
   },
 ];
 
-export const USER_TABLE_INITIAL_WIDTH = USER_TABLE_COLUMNS.reduce(
-  (totalWidth, column) => totalWidth + column.initialWidth,
+export const USER_TABLE_WIDTH = USER_TABLE_COLUMNS.reduce(
+  (total, column) => total + column.initialWidth,
   0,
 );
+
+export function createInitialColumnWidths(): UserTableColumnWidths {
+  return USER_TABLE_COLUMNS.reduce((widths, column) => {
+    widths[column.key] = column.initialWidth;
+
+    return widths;
+  }, {} as UserTableColumnWidths);
+}

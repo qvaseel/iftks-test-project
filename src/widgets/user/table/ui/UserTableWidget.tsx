@@ -3,16 +3,38 @@ import { useTranslation } from "react-i18next";
 import { useStore } from "@/app/store/useStore";
 import { ErrorMessage, Pagination, Spinner } from "@/shared/ui";
 import {
+  createInitialColumnWidths,
+  getResizedColumnWidths,
   USER_TABLE_COLUMNS,
-  USER_TABLE_INITIAL_WIDTH,
+  USER_TABLE_WIDTH,
   UserTableRow,
+  type UserTableColumnKey,
+  type UserTableColumnWidths,
 } from "@/entities/user";
 import { UserSortingRow } from "@/features/user/sorting";
 import { UserFilterRow } from "@/features/user/filter";
+import { useCallback, useState } from "react";
 
 export const UserTableWidget = observer(() => {
   const { t } = useTranslation("user");
   const { usersTableStore } = useStore();
+
+  const [columnWidths, setColumnWidths] = useState<UserTableColumnWidths>(
+    createInitialColumnWidths,
+  );
+
+  const handleColumnResize = useCallback(
+    (columnKey: UserTableColumnKey, requestedWidth: number) => {
+      setColumnWidths((currentWidths) =>
+        getResizedColumnWidths({
+          currentWidths,
+          columnKey,
+          requestedWidth,
+        }),
+      );
+    },
+    [],
+  );
 
   if (
     usersTableStore.isLoading &&
@@ -32,75 +54,86 @@ export const UserTableWidget = observer(() => {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="w-full min-w-0 space-y-4">
       <p className="text-sm text-slate-500">
         {t("users.filters.singleFilterNotice")}
       </p>
 
-      {usersTableStore.isLoading && (
-        <p className="text-center text-sm text-slate-500" role="status">
-          {t("users.states.loading")}
-        </p>
-      )}
+      <div className="relative min-w-0 w-full">
+        {usersTableStore.isLoading && (
+          <div
+            className="
+        absolute inset-x-0 top-0 z-20
+        flex justify-center
+        bg-white/80 py-1
+        text-sm text-slate-500
+      "
+            role="status"
+          >
+            {t("users.states.loading")}
+          </div>
+        )}
 
-      <div className="overflow-x-auto rounded-lg border border-slate-200">
-        <table
-          className="
-            w-full table-fixed
-            border-collapse bg-white
-          "
-          style={{
-            minWidth: USER_TABLE_INITIAL_WIDTH,
-          }}
-        >
-          <colgroup>
-            {USER_TABLE_COLUMNS.map((column) => (
-              <col
-                key={column.key}
-                style={{
-                  width: column.initialWidth,
-                }}
+        <div className="min-w-0 w-full max-w-full overflow-x-auto rounded-lg border border-slate-200">
+          <table
+            className="table-fixed border-collapse bg-white"
+            style={{
+              width: USER_TABLE_WIDTH,
+              minWidth: USER_TABLE_WIDTH,
+              maxWidth: USER_TABLE_WIDTH,
+            }}
+          >
+            <colgroup>
+              {USER_TABLE_COLUMNS.map((column) => (
+                <col
+                  key={column.key}
+                  style={{
+                    width: columnWidths[column.key],
+                  }}
+                />
+              ))}
+            </colgroup>
+
+            <thead>
+              <UserSortingRow
+                columns={USER_TABLE_COLUMNS}
+                sortField={usersTableStore.sortField}
+                sortOrder={usersTableStore.sortOrder}
+                onSort={usersTableStore.setSorting}
+                onColumnResize={handleColumnResize}
+                columnWidths={columnWidths}
               />
-            ))}
-          </colgroup>
 
-          <thead>
-            <UserSortingRow
-              columns={USER_TABLE_COLUMNS}
-              sortField={usersTableStore.sortField}
-              sortOrder={usersTableStore.sortOrder}
-              onSort={usersTableStore.setSorting}
-            />
+              <UserFilterRow
+                columns={USER_TABLE_COLUMNS}
+                activeFilter={usersTableStore.activeFilter}
+                onFilterChange={usersTableStore.setFilter}
+                onApplyFilter={usersTableStore.applyFilter}
+              />
+            </thead>
 
-            <UserFilterRow
-              columns={USER_TABLE_COLUMNS}
-              activeFilter={usersTableStore.activeFilter}
-              onFilterChange={usersTableStore.setFilter}
-              onApplyFilter={usersTableStore.applyFilter}
-            />
-          </thead>
-
-          <tbody>
-            {usersTableStore.users.length > 0 ? (
-              usersTableStore.users.map((user) => (
-                <UserTableRow key={user.id} user={user} />
-              ))
-            ) : (
-              <tr>
-                <td
-                  colSpan={USER_TABLE_COLUMNS.length}
-                  className="
-                    px-4 py-10
-                    text-center text-sm
-                    text-slate-500
-                  "
-                >
-                  {t("users.states.empty")}
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+            <tbody>
+              {usersTableStore.users.length > 0 ? (
+                usersTableStore.users.map((user) => (
+                  <UserTableRow key={user.id} user={user} />
+                ))
+              ) : (
+                <tr>
+                  <td
+                    colSpan={USER_TABLE_COLUMNS.length}
+                    className="
+                px-4 py-10
+                text-center text-sm
+                text-slate-500
+              "
+                  >
+                    {t("users.states.empty")}
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <Pagination

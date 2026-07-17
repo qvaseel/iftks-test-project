@@ -9,7 +9,8 @@
       "phone": "Телефон",
       "email": "Email",
       "country": "Страна",
-      "city": "Город"
+      "city": "Город",
+      "resize": "Изменить ширину колонки {{column}}"
     },
     "sorting": {
       "ascending": "Сортировать {{column}} по возрастанию",
