@@ -14,10 +14,12 @@ import {
 import { UserSortingRow } from "@/features/user/sorting";
 import { UserFilterRow } from "@/features/user/filter";
 import { useCallback, useState } from "react";
+import { UserDetailsModal } from "@/features/user/view";
 
 export const UserTableWidget = observer(() => {
   const { t } = useTranslation("user");
-  const { usersTableStore } = useStore();
+  const { usersTableStore, userModalStore } = useStore();
+  const isUserDetailsModalOpen = userModalStore.selectedUserId !== null;
 
   const [columnWidths, setColumnWidths] = useState<UserTableColumnWidths>(
     createInitialColumnWidths,
@@ -43,6 +45,13 @@ export const UserTableWidget = observer(() => {
   ) {
     return <Spinner text={t("users.states.loading")} />;
   }
+
+  const handleUserSelect = useCallback(
+    (userId: number) => {
+      void userModalStore.loadUserDetails(userId);
+    },
+    [userModalStore],
+  );
 
   if (usersTableStore.error) {
     return (
@@ -115,7 +124,11 @@ export const UserTableWidget = observer(() => {
             <tbody>
               {usersTableStore.users.length > 0 ? (
                 usersTableStore.users.map((user) => (
-                  <UserTableRow key={user.id} user={user} />
+                  <UserTableRow
+                    key={user.id}
+                    user={user}
+                    onSelect={handleUserSelect}
+                  />
                 ))
               ) : (
                 <tr>
@@ -140,6 +153,14 @@ export const UserTableWidget = observer(() => {
         currentPage={usersTableStore.page}
         totalPages={usersTableStore.totalPages}
         onPageChange={usersTableStore.setPage}
+      />
+      <UserDetailsModal
+        isOpen={isUserDetailsModalOpen}
+        user={userModalStore.selectedUser}
+        isLoading={userModalStore.isUserDetailsLoading}
+        error={userModalStore.userDetailsError}
+        onClose={userModalStore.clearUserDetails}
+        onRetry={userModalStore.retryUserDetails}
       />
     </div>
   );

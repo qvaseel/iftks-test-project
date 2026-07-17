@@ -30,6 +30,25 @@
     "states": {
       "loading": "Loading users...",
       "empty": "No users found"
+    },
+    "table": {
+      "openDetails": "Открыть информацию о пользователе {{name}}"
+    },
+    "details": {
+      "title": "Информация о пользователе",
+      "loading": "Загрузка информации...",
+      "empty": "Информация о пользователе отсутствует",
+      "close": "Закрыть",
+      "personal": "Личная информация",
+      "contacts": "Контакты",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "maidenName": "Отчество",
+      "age": "Возраст",
+      "gender": "Пол",
+      "email": "Email",
+      "phone": "Телефон",
+      "address": "Адрес"
     }
   }
 }

@@ -6,7 +6,6 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
-import { useTranslation } from "react-i18next";
 
 interface ModalProps {
   isOpen: boolean;
@@ -24,11 +23,9 @@ export function Modal({
   children,
   onClose,
   footer,
-  closeLabel,
+  closeLabel = "Закрыть",
   closeOnBackdrop = true,
 }: ModalProps) {
-  const { t } = useTranslation("common");
-
   const titleId = useId();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previouslyFocusedElementRef = useRef<HTMLElement | null>(null);
@@ -143,8 +140,8 @@ export function Modal({
               focus-visible:ring-2
               focus-visible:ring-blue-500
             "
-            aria-label={closeLabel ?? t("actions.close")}
-            title={closeLabel ?? t("actions.close")}
+            aria-label={closeLabel}
+            title={closeLabel}
             onClick={onClose}
           >
             <span aria-hidden="true">×</span>

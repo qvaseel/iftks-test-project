@@ -30,6 +30,26 @@
     "states": {
       "loading": "Загрузка пользователей...",
       "empty": "Пользователи не найдены"
+    },
+    "table": {
+      "openDetails": "Open details for {{name}}"
+    },
+    "details": {
+      "title": "User details",
+      "loading": "Loading user details...",
+      "empty": "User details are unavailable",
+      "close": "Close",
+      "personal": "Personal information",
+      "contacts": "Contacts",
+      "company": "Company",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "maidenName": "Maiden name",
+      "age": "Age",
+      "gender": "Gender",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address"
     }
   }
 }

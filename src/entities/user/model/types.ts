@@ -100,3 +100,12 @@ export interface ResizeState {
   startX: number;
   startWidth: number;
 }
+
+export interface UserDetailsProps {
+  user: User;
+}
+
+export interface DetailItemProps {
+  label: string;
+  value: string | number | null | undefined;
+}

@@ -1,10 +1,11 @@
-import type { ReactNode } from "react";
+import type { KeyboardEvent, ReactNode } from "react";
 import type { User, UserTableColumnKey } from "../model";
 import { USER_TABLE_COLUMNS } from "../config";
 import { useTranslation } from "react-i18next";
 
 interface UserTableRowProps {
   user: User;
+  onSelect: (userId: number) => void;
 }
 
 function getCellValue(user: User, columnKey: UserTableColumnKey): ReactNode {
@@ -41,11 +42,26 @@ function getCellValue(user: User, columnKey: UserTableColumnKey): ReactNode {
   }
 }
 
-export function UserTableRow({ user }: UserTableRowProps) {
+export function UserTableRow({ user, onSelect }: UserTableRowProps) {
   const { t } = useTranslation("user");
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLTableRowElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      onSelect(user.id);
+    }
+  };
+
   return (
-    <tr className="border-b border-slate-200 transition-colors last:border-b-0 hover:bg-slate-50">
+    <tr
+      tabIndex={0}
+      role="button"
+      className="border-b border-slate-200 transition-colors last:border-b-0 hover:bg-slate-50 hover:cursor-pointer"
+      onClick={() => {
+        onSelect(user.id);
+      }}
+      onKeyDown={handleKeyDown}
+    >
       {USER_TABLE_COLUMNS.map((column) => {
         const value = getCellValue(user, column.key);
 
