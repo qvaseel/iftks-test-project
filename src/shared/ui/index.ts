@@ -21,3 +21,9 @@ export const Pagination = lazyLoad(() =>
 export const SortButton = lazyLoad(() =>
   import("./sort-button.tsx").then((m) => ({ default: m.SortButton })),
 );
+export const Input = lazyLoad(() =>
+  import("./input.tsx").then((m) => ({ default: m.Input })),
+);
+export const Select = lazyLoad(() =>
+  import("./select.tsx").then((m) => ({ default: m.Select })),
+);
