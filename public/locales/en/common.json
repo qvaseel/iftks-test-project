@@ -1,5 +1,20 @@
 {
   "actions": {
-    "close": "Close"
+    "close": "Close",
+    "reset": "Reset",
+    "retry": "Retry"
+  },
+  "language": {
+    "en": "English",
+    "label": "Language",
+    "ru": "Русский"
+  },
+  "pagination": {
+    "label": "Pagination",
+    "next": "Next",
+    "nextShort": "→",
+    "page": "Page {{page}}",
+    "previous": "Previous",
+    "previousShort": "←"
   }
 }

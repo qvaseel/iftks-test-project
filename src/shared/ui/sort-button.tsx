@@ -39,7 +39,7 @@ export function SortButton({
       return `${t("sorting.descending", { column: label })}`;
     }
 
-    return `${t("clear", { column: label })}`;
+    return `${t("sorting.clear", { column: label })}`;
   };
 
   return (

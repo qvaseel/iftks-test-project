@@ -6,6 +6,8 @@ const lazyLoad = <T extends ComponentType<any>>(
   factory: () => Promise<{ default: T }>,
 ) => withSuspense(lazy(factory));
 
+export type { SelectOption } from "./select.tsx";
+
 export const Button = lazyLoad(() =>
   import("./button.tsx").then((m) => ({ default: m.Button })),
 );

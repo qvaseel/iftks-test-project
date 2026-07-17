@@ -1,55 +1,65 @@
 {
+  "sorting": {
+    "ascending": "Сортировать {{column}} по возрастанию",
+    "descending": "Сортировать {{column}} по убыванию",
+    "clear": "Убрать сортировку колонки {{column}}"
+  },
   "users": {
     "columns": {
-      "lastName": "Фамилия",
-      "firstName": "Имя",
-      "maidenName": "Отчество",
       "age": "Возраст",
-      "gender": "Пол",
-      "phone": "Телефон",
-      "email": "Email",
-      "country": "Страна",
       "city": "Город",
+      "country": "Страна",
+      "email": "Email",
+      "firstName": "Имя",
+      "gender": "Пол",
+      "lastName": "Фамилия",
+      "maidenName": "Отчество",
+      "phone": "Телефон",
       "resize": "Изменить ширину колонки {{column}}"
+    },
+    "details": {
+      "address": "users.details.address",
+      "age": "Возраст",
+      "close": "Закрыть",
+      "contacts": "Контакты",
+      "email": "Email",
+      "empty": "Информация о пользователе отсутствует",
+      "firstName": "Имя",
+      "gender": "Пол",
+      "lastName": "Фамилия",
+      "loading": "Загрузка информации...",
+      "maidenName": "Отчество",
+      "personal": "Личная информация",
+      "phone": "Телефон",
+      "title": "Информация о пользователе"
+    },
+    "errors": {
+      "loadDetails": "Не удалось загрузить информацию о пользователе",
+      "loadList": "Не удалось загрузить пользователей"
+    },
+    "filters": {
+      "all": "Все",
+      "byColumn": "Фильтр по полю {{column}}",
+      "placeholder": "Фильтр",
+      "singleFilterNotice": "Одновременно можно применить только один серверный фильтр"
+    },
+    "gender": {
+      "female": "Женский",
+      "male": "Мужской"
     },
     "sorting": {
       "ascending": "Сортировать {{column}} по возрастанию",
-      "descending": "Сортировать {{column}} по убыванию",
-      "clear": "Убрать сортировку {{column}}"
-    },
-    "gender": {
-      "male": "Мужской",
-      "female": "Женский"
-    },
-    "filters": {
-      "placeholder": "Фильтр",
-      "all": "Все",
-      "byColumn": "Фильтр по полю {{column}}",
-      "singleFilterNotice": "Одновременно можно применить только один серверный фильтр"
+      "clear": "Убрать сортировку колонки {{column}}",
+      "descending": "Сортировать {{column}} по убыванию"
     },
     "states": {
-      "loading": "Загрузка пользователей...",
-      "empty": "Пользователи не найдены"
+      "empty": "Пользователи не найдены",
+      "loading": "Загрузка пользователей..."
     },
     "table": {
-      "openDetails": "Open details for {{name}}"
+      "openDetails": "Открыть информацию о пользователе {{name}}",
+      "scrollHint": "Проведите по таблице в сторону, чтобы увидеть остальные столбцы"
     },
-    "details": {
-      "title": "User details",
-      "loading": "Loading user details...",
-      "empty": "User details are unavailable",
-      "close": "Close",
-      "personal": "Personal information",
-      "contacts": "Contacts",
-      "company": "Company",
-      "firstName": "First name",
-      "lastName": "Last name",
-      "maidenName": "Maiden name",
-      "age": "Age",
-      "gender": "Gender",
-      "email": "Email",
-      "phone": "Phone",
-      "address": "Address"
-    }
+    "title": "Пользователи"
   }
 }

@@ -1,12 +1,12 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { getUser } from "../api";
-import type { User } from "@/entities/user";
+import type { User, UserModalErrorKey } from "@/entities/user";
 
 export class UserModalStore {
   selectedUser: User | null = null;
   selectedUserId: number | null = null;
   isUserDetailsLoading = false;
-  userDetailsError: string | null = null;
+  userDetailsError: UserModalErrorKey | null = null;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -32,16 +32,13 @@ export class UserModalStore {
 
         this.selectedUser = user;
       });
-    } catch (error) {
+    } catch {
       runInAction(() => {
         if (this.selectedUserId !== userId) {
           return;
         }
 
-        this.userDetailsError =
-          error instanceof Error
-            ? error.message
-            : "Не удалось загрузить пользователя";
+        this.userDetailsError = "users.errors.loadDetails";
       });
     } finally {
       runInAction(() => {

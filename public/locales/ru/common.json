@@ -1,5 +1,20 @@
 {
   "actions": {
-    "close": "Закрыть"
+    "close": "Закрыть",
+    "reset": "Сбросить",
+    "retry": "Повторить"
+  },
+  "language": {
+    "en": "English",
+    "label": "Язык",
+    "ru": "Русский"
+  },
+  "pagination": {
+    "label": "Пагинация",
+    "next": "Вперёд",
+    "nextShort": "→",
+    "page": "Страница {{page}}",
+    "previous": "Назад",
+    "previousShort": "←"
   }
 }

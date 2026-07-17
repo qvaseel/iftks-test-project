@@ -1,54 +1,65 @@
 {
+  "sorting": {
+    "ascending": "Sort {{column}} ascending",
+    "descending": "Sort {{column}} descending",
+    "clear": "Clear sorting for {{column}}"
+  },
   "users": {
     "columns": {
-      "lastName": "Last name",
-      "firstName": "First name",
-      "maidenName": "Maiden name",
       "age": "Age",
-      "gender": "Gender",
-      "phone": "Phone",
-      "email": "Email",
-      "country": "Country",
       "city": "City",
+      "country": "Country",
+      "email": "Email",
+      "firstName": "First name",
+      "gender": "Gender",
+      "lastName": "Last name",
+      "maidenName": "Maiden name",
+      "phone": "Phone",
       "resize": "Resize {{column}} column"
+    },
+    "details": {
+      "address": "Address",
+      "age": "Age",
+      "close": "Close",
+      "contacts": "Contacts",
+      "email": "Email",
+      "empty": "User details are unavailable",
+      "firstName": "First name",
+      "gender": "Gender",
+      "lastName": "Last name",
+      "loading": "Loading user details...",
+      "maidenName": "Maiden name",
+      "personal": "Personal information",
+      "phone": "Phone",
+      "title": "User details"
+    },
+    "errors": {
+      "loadDetails": "Failed to load user details",
+      "loadList": "Failed to load users"
+    },
+    "filters": {
+      "all": "All",
+      "byColumn": "Filter by {{column}}",
+      "placeholder": "Filter",
+      "singleFilterNotice": "Only one server-side filter can be active at a time"
+    },
+    "gender": {
+      "female": "Female",
+      "male": "Male"
     },
     "sorting": {
       "ascending": "Sort {{column}} ascending",
-      "descending": "Sort {{column}} descending",
-      "clear": "Clear {{column}} sorting"
-    },
-    "gender": {
-      "male": "Male",
-      "female": "Female"
-    },
-    "filters": {
-      "placeholder": "Filter",
-      "all": "All",
-      "byColumn": "Filter by {{column}}",
-      "singleFilterNotice": "Only one server-side filter can be active at a time"
+      "clear": "Clear sorting for {{column}}",
+      "descending": "Sort {{column}} descending"
     },
     "states": {
-      "loading": "Loading users...",
-      "empty": "No users found"
+      "empty": "No users found",
+      "loading": "Loading users..."
     },
     "table": {
-      "openDetails": "Открыть информацию о пользователе {{name}}"
+      "openDetails": "Open details for {{name}}",
+      "scrollHint": "Swipe horizontally to view the remaining columns"
     },
-    "details": {
-      "title": "Информация о пользователе",
-      "loading": "Загрузка информации...",
-      "empty": "Информация о пользователе отсутствует",
-      "close": "Закрыть",
-      "personal": "Личная информация",
-      "contacts": "Контакты",
-      "firstName": "Имя",
-      "lastName": "Фамилия",
-      "maidenName": "Отчество",
-      "age": "Возраст",
-      "gender": "Пол",
-      "email": "Email",
-      "phone": "Телефон",
-      "address": "Адрес"
-    }
+    "title": "Users"
   }
 }

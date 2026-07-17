@@ -48,12 +48,9 @@ export class UsersTableStore {
         this.users = response.users;
         this.total = response.total;
       });
-    } catch (error) {
+    } catch {
       runInAction(() => {
-        this.error =
-          error instanceof Error
-            ? error.message
-            : "Не удалось загрузить пользователей";
+        this.error = "users.errors.loadList";
       });
     } finally {
       runInAction(() => {

@@ -1,4 +1,5 @@
 import { Button } from "@/shared/ui/button";
+import { useTranslation } from "react-i18next";
 
 interface ErrorMessageProps {
   message: string;
@@ -6,25 +7,25 @@ interface ErrorMessageProps {
 }
 
 export function ErrorMessage({ message, onRetry }: ErrorMessageProps) {
+  const { t } = useTranslation("common");
+
   return (
     <div
       className="
-        flex min-h-40
-        flex-col items-center justify-center
-        gap-4 rounded-lg
-        border border-red-200
-        bg-red-50 p-6
+        rounded-lg border
+        border-red-200
+        bg-red-50 p-4
         text-center
       "
       role="alert"
     >
-      <div>
-        <h2 className="font-semibold text-red-800">Произошла ошибка</h2>
+      <p className="text-sm text-red-700">{message}</p>
 
-        <p className="mt-1 text-sm text-red-700">{message}</p>
-      </div>
-
-      {onRetry && <Button onClick={onRetry}>Повторить</Button>}
+      {onRetry && (
+        <Button className="mt-3" onClick={onRetry}>
+          {t("actions.retry")}
+        </Button>
+      )}
     </div>
   );
 }

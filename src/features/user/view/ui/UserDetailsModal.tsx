@@ -37,7 +37,7 @@ export function UserDetailsModal({
 
       {!isLoading && error && (
         <div className="flex min-h-64 items-center justify-center">
-          <ErrorMessage message={error} onRetry={onRetry} />
+          <ErrorMessage message={t(error)} onRetry={onRetry} />
         </div>
       )}
 

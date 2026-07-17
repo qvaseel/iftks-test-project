@@ -1,5 +1,6 @@
 import { Button } from "@/shared/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface PaginationProps {
   currentPage: number;
@@ -12,14 +13,14 @@ export function Pagination({
   totalPages,
   onPageChange,
 }: PaginationProps) {
+  const { t } = useTranslation("common");
+
   if (totalPages <= 1) {
     return null;
   }
 
   const startPage = Math.max(1, currentPage - 2);
-
   const endPage = Math.min(totalPages, currentPage + 2);
-
   const pages = Array.from(
     {
       length: endPage - startPage + 1,
@@ -36,7 +37,7 @@ export function Pagination({
         gap-1.5
         sm:gap-2
       "
-      aria-label="Пагинация"
+      aria-label={t("pagination.label")}
     >
       <Button
         variant="secondary"
@@ -48,7 +49,7 @@ export function Pagination({
           <ArrowLeft />
         </span>
 
-        <span className="hidden sm:inline">Назад</span>
+        <span className="hidden sm:inline">{t("pagination.previous")}</span>
       </Button>
 
       {startPage > 1 && (
@@ -107,7 +108,7 @@ export function Pagination({
           <ArrowRight />
         </span>
 
-        <span className="hidden sm:inline">Вперёд</span>
+        <span className="hidden sm:inline">{t("pagination.next")}</span>
       </Button>
     </nav>
   );

@@ -19,6 +19,7 @@ import { UserDetailsModal } from "@/features/user/view";
 export const UserTableWidget = observer(() => {
   const { t } = useTranslation("user");
   const { usersTableStore, userModalStore } = useStore();
+
   const isUserDetailsModalOpen = userModalStore.selectedUserId !== null;
 
   const [columnWidths, setColumnWidths] = useState<UserTableColumnWidths>(
@@ -38,6 +39,13 @@ export const UserTableWidget = observer(() => {
     [],
   );
 
+  const handleUserSelect = useCallback(
+    (userId: number) => {
+      void userModalStore.loadUserDetails(userId);
+    },
+    [userModalStore],
+  );
+
   if (
     usersTableStore.isLoading &&
     usersTableStore.users.length === 0 &&
@@ -46,17 +54,10 @@ export const UserTableWidget = observer(() => {
     return <Spinner text={t("users.states.loading")} />;
   }
 
-  const handleUserSelect = useCallback(
-    (userId: number) => {
-      void userModalStore.loadUserDetails(userId);
-    },
-    [userModalStore],
-  );
-
   if (usersTableStore.error) {
     return (
       <ErrorMessage
-        message={usersTableStore.error}
+        message={t(usersTableStore.error)}
         onRetry={usersTableStore.retry}
       />
     );
@@ -69,15 +70,6 @@ export const UserTableWidget = observer(() => {
       </p>
 
       <div className="relative w-full min-w-0">
-        {usersTableStore.isLoading && (
-          <div
-            className="absolute inset-x-0 top-0 z-20 flex justify-center bg-white/80 py-1 text-xs text-slate-500 sm:text-sm"
-            role="status"
-          >
-            {t("users.states.loading")}
-          </div>
-        )}
-
         <div className="min-w-0 w-full max-w-full overflow-x-auto overscroll-x-contain rounded-lg border border-slate-200 bg-white">
           <table
             className="table-fixed border-collapse bg-white"
