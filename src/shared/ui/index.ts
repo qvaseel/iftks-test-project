@@ -20,9 +20,6 @@ export const Spinner = lazyLoad(() =>
 export const Pagination = lazyLoad(() =>
   import("./pagination.tsx").then((m) => ({ default: m.Pagination })),
 );
-export const SortButton = lazyLoad(() =>
-  import("./sort-button.tsx").then((m) => ({ default: m.SortButton })),
-);
 export const Input = lazyLoad(() =>
   import("./input.tsx").then((m) => ({ default: m.Input })),
 );

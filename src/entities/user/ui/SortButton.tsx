@@ -1,6 +1,6 @@
-import type { SortOrder, UsersSortField } from "@/entities/user";
 import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import type { SortOrder, UsersSortField } from "../model";
 
 interface SortButtonProps {
   field: UsersSortField;

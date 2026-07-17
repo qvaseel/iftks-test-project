@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { ColumnHandleResize } from "@/entities/user";
-import { SortButton } from "@/shared/ui";
+import { ColumnHandleResize, SortButton } from "@/entities/user";
 import type { UserSortingRowProps } from "../model";
 
 export function UserSortingRow({

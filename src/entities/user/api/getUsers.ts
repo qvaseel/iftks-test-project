@@ -1,4 +1,4 @@
-import { apiClient } from "@/shared/api/mainApi";
+import { apiClient } from "@/shared/api";
 import type { GetUsersRequestParams, GetUsersResponse } from "../model";
 
 export function getUsers({

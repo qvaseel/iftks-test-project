@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import { useStore } from "@/app/store";
 import { UserTableWidget } from "@/widgets/user/table";
 import { useTranslation } from "react-i18next";
+import { useStore } from "@/shared/lib";
 
 export const UserTablePage = observer(() => {
   const { usersTableStore } = useStore();

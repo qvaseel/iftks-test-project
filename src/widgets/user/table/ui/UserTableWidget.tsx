@@ -1,6 +1,5 @@
 import { observer } from "mobx-react-lite";
 import { useTranslation } from "react-i18next";
-import { useStore } from "@/app/store/useStore";
 import { ErrorMessage, Pagination, Spinner } from "@/shared/ui";
 import {
   createInitialColumnWidths,
@@ -15,6 +14,7 @@ import { UserSortingRow } from "@/features/user/sorting";
 import { UserFilterRow } from "@/features/user/filter";
 import { useCallback, useState } from "react";
 import { UserDetailsModal } from "@/features/user/view";
+import { useStore } from "@/shared/lib";
 
 export const UserTableWidget = observer(() => {
   const { t } = useTranslation("user");

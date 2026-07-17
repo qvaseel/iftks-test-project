@@ -1,11 +1,9 @@
 import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import { RootStore, StoreContext } from "./store";
+import { rootStore } from "./lib/index.ts";
 import "./index.css";
 import App from "./App.tsx";
-import { LocalizationLoader } from "@/shared/lib";
-
-const rootStore = new RootStore();
+import { LocalizationLoader, StoreContext } from "@/shared/lib";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

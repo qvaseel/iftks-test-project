@@ -10,3 +10,6 @@ export class RootStore {
     this.userModalStore = new UserModalStore();
   }
 }
+
+export const rootStore = new RootStore();
+export type AppStore = RootStore;
