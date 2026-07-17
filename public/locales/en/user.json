@@ -15,6 +15,20 @@
       "ascending": "Sort {{column}} ascending",
       "descending": "Sort {{column}} descending",
       "clear": "Clear {{column}} sorting"
+    },
+    "gender": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "filters": {
+      "placeholder": "Filter",
+      "all": "All",
+      "byColumn": "Filter by {{column}}",
+      "singleFilterNotice": "Only one server-side filter can be active at a time"
+    },
+    "states": {
+      "loading": "Loading users...",
+      "empty": "No users found"
     }
   }
 }

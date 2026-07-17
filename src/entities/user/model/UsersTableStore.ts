@@ -107,13 +107,15 @@ export class UsersTableStore {
     }
 
     this.page = 1;
-  }
 
-  applyFilter(): void {
     void this.loadUsers();
   }
 
   clearFilter(): void {
+    if (!this.activeFilter) {
+      return;
+    }
+
     this.activeFilter = null;
     this.page = 1;
 
