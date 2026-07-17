@@ -85,9 +85,9 @@ export function Modal({
     <div
       className="
         fixed inset-0 z-50
-        flex items-center justify-center
+        flex items-end justify-center
         bg-slate-950/50
-        p-4
+        sm:items-center sm:p-4
       "
       onMouseDown={handleBackdropClick}
     >
@@ -96,29 +96,38 @@ export function Modal({
         aria-modal="true"
         aria-labelledby={titleId}
         className="
-          flex max-h-[calc(100vh-2rem)]
-          w-full max-w-2xl
-          flex-col
-          overflow-hidden
-          rounded-xl bg-white
-          shadow-2xl
-        "
+            flex
+            max-h-[92dvh]
+            w-full
+            flex-col
+            overflow-hidden
+            rounded-t-2xl
+            bg-white
+            shadow-2xl
+
+            sm:max-h-[calc(100dvh-2rem)]
+            sm:max-w-2xl
+            sm:rounded-xl
+          "
       >
         <header
           className="
             flex shrink-0
             items-center justify-between
-            gap-4
+            gap-3
             border-b border-slate-200
-            px-5 py-4
+            px-4 py-3
+            sm:gap-4
+            sm:px-5 sm:py-4
           "
         >
           <h2
             id={titleId}
             className="
-              min-w-0 truncate
-              text-xl font-semibold
-              text-slate-900
+                min-w-0 truncate
+                text-lg font-semibold
+                text-slate-900
+                sm:text-xl
             "
           >
             {title}
@@ -152,7 +161,9 @@ export function Modal({
           className="
             min-h-0 flex-1
             overflow-y-auto
-            px-5 py-4
+            overscroll-y-contain
+            px-4 py-4
+            sm:px-5
           "
         >
           {children}
@@ -161,11 +172,13 @@ export function Modal({
         {footer && (
           <footer
             className="
-              flex shrink-0
-              items-center justify-end
-              gap-3
-              border-t border-slate-200
-              px-5 py-4
+                flex shrink-0
+                items-center justify-end
+                gap-2
+                border-t border-slate-200
+                px-4 py-3
+                sm:gap-3
+                sm:px-5 sm:py-4
             "
           >
             {footer}

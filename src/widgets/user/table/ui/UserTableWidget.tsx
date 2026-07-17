@@ -63,27 +63,22 @@ export const UserTableWidget = observer(() => {
   }
 
   return (
-    <div className="w-full min-w-0 space-y-4">
-      <p className="text-sm text-slate-500">
+    <div className="w-full min-w-0 space-y-3 sm:space-y-4">
+      <p className="text-xs leading-5 text-slate-500 sm:text-sm">
         {t("users.filters.singleFilterNotice")}
       </p>
 
-      <div className="relative min-w-0 w-full">
+      <div className="relative w-full min-w-0">
         {usersTableStore.isLoading && (
           <div
-            className="
-        absolute inset-x-0 top-0 z-20
-        flex justify-center
-        bg-white/80 py-1
-        text-sm text-slate-500
-      "
+            className="absolute inset-x-0 top-0 z-20 flex justify-center bg-white/80 py-1 text-xs text-slate-500 sm:text-sm"
             role="status"
           >
             {t("users.states.loading")}
           </div>
         )}
 
-        <div className="min-w-0 w-full max-w-full overflow-x-auto rounded-lg border border-slate-200">
+        <div className="min-w-0 w-full max-w-full overflow-x-auto overscroll-x-contain rounded-lg border border-slate-200 bg-white">
           <table
             className="table-fixed border-collapse bg-white"
             style={{
@@ -134,11 +129,7 @@ export const UserTableWidget = observer(() => {
                 <tr>
                   <td
                     colSpan={USER_TABLE_COLUMNS.length}
-                    className="
-                px-4 py-10
-                text-center text-sm
-                text-slate-500
-              "
+                    className="px-4 py-8 text-center text-sm text-slate-500 sm:py-10"
                   >
                     {t("users.states.empty")}
                   </td>

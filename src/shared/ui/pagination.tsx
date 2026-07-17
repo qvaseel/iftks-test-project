@@ -1,4 +1,5 @@
 import { Button } from "@/shared/ui/button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface PaginationProps {
   currentPage: number;
@@ -16,33 +17,51 @@ export function Pagination({
   }
 
   const startPage = Math.max(1, currentPage - 2);
+
   const endPage = Math.min(totalPages, currentPage + 2);
 
   const pages = Array.from(
-    { length: endPage - startPage + 1 },
+    {
+      length: endPage - startPage + 1,
+    },
     (_, index) => startPage + index,
   );
 
   return (
     <nav
-      className="flex flex-wrap items-center justify-center gap-2"
+      className="
+        flex w-full
+        flex-wrap
+        items-center justify-center
+        gap-1.5
+        sm:gap-2
+      "
       aria-label="Пагинация"
     >
       <Button
         variant="secondary"
+        className="px-2 text-xs sm:px-3 sm:text-sm"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
-        Назад
+        <span className="sm:hidden">
+          <ArrowLeft />
+        </span>
+
+        <span className="hidden sm:inline">Назад</span>
       </Button>
 
       {startPage > 1 && (
         <>
-          <Button variant="secondary" onClick={() => onPageChange(1)}>
+          <Button
+            variant="secondary"
+            className="min-w-9 px-2"
+            onClick={() => onPageChange(1)}
+          >
             1
           </Button>
 
-          {startPage > 2 && <span className="px-1 text-slate-500">…</span>}
+          {startPage > 2 && <span className="px-1 text-slate-400">…</span>}
         </>
       )}
 
@@ -53,6 +72,7 @@ export function Pagination({
           <Button
             key={page}
             variant={isActive ? "primary" : "secondary"}
+            className="min-w-9 px-2"
             aria-current={isActive ? "page" : undefined}
             onClick={() => onPageChange(page)}
           >
@@ -64,10 +84,14 @@ export function Pagination({
       {endPage < totalPages && (
         <>
           {endPage < totalPages - 1 && (
-            <span className="px-1 text-slate-500">…</span>
+            <span className="px-1 text-slate-400">…</span>
           )}
 
-          <Button variant="secondary" onClick={() => onPageChange(totalPages)}>
+          <Button
+            variant="secondary"
+            className="min-w-9 px-2"
+            onClick={() => onPageChange(totalPages)}
+          >
             {totalPages}
           </Button>
         </>
@@ -75,10 +99,15 @@ export function Pagination({
 
       <Button
         variant="secondary"
+        className="px-2 text-xs sm:px-3 sm:text-sm"
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
       >
-        Вперёд
+        <span className="sm:hidden">
+          <ArrowRight />
+        </span>
+
+        <span className="hidden sm:inline">Вперёд</span>
       </Button>
     </nav>
   );

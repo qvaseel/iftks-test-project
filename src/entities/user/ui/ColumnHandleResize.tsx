@@ -86,8 +86,30 @@ export function ColumnHandleResize({
   return (
     <button
       type="button"
-      className={`absolute right-0 top-0 z-10 h-full w-2 translate-x-1/2 cursor-col-resize touch-none select-none border-0 bg-transparent
-         p-0 outline-none hover:bg-blue-400/40 focus-visible:bg-blue-400/40 ${isResizing ? "bg-blue-500/50" : ""}`}
+      className={`
+        absolute
+        right-0 top-0 z-10
+        h-full w-4
+        translate-x-1/2
+        cursor-col-resize
+        touch-none select-none
+        border-0
+        bg-transparent
+        p-0 outline-none
+
+        after:absolute
+        after:bottom-0
+        after:left-1/2
+        after:top-0
+        after:w-px
+        after:-translate-x-1/2
+        after:bg-transparent
+
+        hover:after:bg-blue-400
+        focus-visible:after:bg-blue-400
+
+        ${isResizing ? "after:bg-blue-500" : ""}
+      `}
       aria-label={label}
       title={label}
       onPointerDown={handlePointerDown}

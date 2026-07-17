@@ -46,7 +46,7 @@ export function UserFilterRow({
           return (
             <th
               key={column.key}
-              className="border-b border-slate-200 bg-slate-50 px-2 py-2"
+              className="border-b border-slate-300 bg-slate-50 px-1.5 py-1.5 sm:px-2 sm:py-2"
             />
           );
         }
@@ -59,7 +59,7 @@ export function UserFilterRow({
         return (
           <th
             key={column.key}
-            className="border-b border-slate-200 bg-slate-50 px-2 py-2 font-normal"
+            className="border-b border-slate-300 bg-slate-50 px-1.5 py-1.5 sm:px-2 sm:py-2 font-normal"
           >
             {filterType === "select" ? (
               <Select

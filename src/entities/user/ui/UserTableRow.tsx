@@ -56,7 +56,7 @@ export function UserTableRow({ user, onSelect }: UserTableRowProps) {
     <tr
       tabIndex={0}
       role="button"
-      className="border-b border-slate-200 transition-colors last:border-b-0 hover:bg-slate-50 hover:cursor-pointer"
+      className="border-b border-slate-200 transition-colors last:border-b-0 hover:bg-slate-50 cursor-pointer"
       onClick={() => {
         onSelect(user.id);
       }}
@@ -71,7 +71,7 @@ export function UserTableRow({ user, onSelect }: UserTableRowProps) {
         return (
           <td
             key={column.key}
-            className="overflow-hidden px-3 py-3 text-sm text-ellipsis whitespace-nowrap text-slate-700"
+            className="overflow-hidden px-2 py-2.5 text-xs text-ellipsis whitespace-nowrap text-slate-700 sm:px-3 sm:py-3 sm:text-sm"
             title={String(displayedValue)}
           >
             {displayedValue}

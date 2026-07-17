@@ -20,11 +20,12 @@ export function UserDetails({ user }: UserDetailsProps) {
           src={user.image}
           alt={fullName}
           className="
-            h-28 w-28
+            h-24 w-24
             shrink-0 rounded-full
             border border-slate-200
             bg-slate-100
             object-cover
+            sm:h-28 sm:w-28
           "
         />
 
@@ -40,7 +41,7 @@ export function UserDetails({ user }: UserDetailsProps) {
           {t("users.details.personal")}
         </h4>
 
-        <div className="grid grid-cols-1 gap-4 rounded-lg bg-slate-50 p-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 rounded-lg bg-slate-50 p-3 sm:grid-cols-2 sm:gap-4 sm:p-4">
           <DetailItem
             label={t("users.details.firstName")}
             value={user.firstName}
@@ -70,7 +71,7 @@ export function UserDetails({ user }: UserDetailsProps) {
           {t("users.details.contacts")}
         </h4>
 
-        <dl className="grid grid-cols-1 gap-4 rounded-lg bg-slate-50 p-4 sm:grid-cols-2">
+        <dl className="grid grid-cols-1 gap-3 rounded-lg bg-slate-50 p-3 sm:grid-cols-2 sm:gap-4 sm:p-4">
           <DetailItem label={t("users.details.email")} value={user.email} />
 
           <DetailItem label={t("users.details.phone")} value={user.phone} />
