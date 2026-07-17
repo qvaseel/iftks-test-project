@@ -17,7 +17,7 @@ export function SortButton({
   label,
   onSort,
 }: SortButtonProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("user");
   const isActive = field === activeField;
 
   let icon = <ArrowUpDown />;

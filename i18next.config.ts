@@ -1,9 +1,12 @@
-import { defineConfig } from 'i18next-cli';
+import { defineConfig } from "i18next-cli";
 
 export default defineConfig({
-  locales: ['en', 'ru'],
+  locales: ["en", "ru"],
   extract: {
-    input: ['src/**/*.{js,jsx,ts,tsx}'],
-    output: 'public/locales/{{language}}/{{namespace}}.json',
+    input: ["src/**/*.{js,jsx,ts,tsx}"],
+    output: "public/locales/{{language}}/{{namespace}}.json",
+    removeUnusedKeys: false,
+    primaryLanguage: "ru",
+    secondaryLanguages: ["en"],
   },
 });

@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import type { SortOrder, UsersSortField } from "@/entities/user";
 import { SortButton } from "@/shared/ui";
 
-
 interface SortingColumn {
   key: string;
   titleKey: string;
@@ -22,7 +21,7 @@ export function UserSortingRow({
   sortOrder,
   onSort,
 }: UserSortingRowProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("user");
 
   return (
     <tr>
