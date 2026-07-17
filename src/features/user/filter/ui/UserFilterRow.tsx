@@ -1,28 +1,29 @@
 import { useTranslation } from "react-i18next";
-import type { ActiveFilter, UsersFilterField } from "@/entities/user";
 import { Input, Select } from "@/shared/ui";
-
-type FilterControlType = "text" | "number" | "select";
-
-interface FilterColumn {
-  key: string;
-  titleKey: string;
-  filterField?: UsersFilterField;
-  filterType?: FilterControlType;
-}
-
-interface UsersFilterRowProps {
-  columns: readonly FilterColumn[];
-  activeFilter: ActiveFilter | null;
-  onFilterChange: (field: UsersFilterField, value: string) => void;
-}
+import type { UsersFilterRowProps } from "../model";
+import { useDebounce } from "@/shared/lib";
+import { useEffect, useRef } from "react";
 
 export function UserFilterRow({
   columns,
   activeFilter,
   onFilterChange,
+  onApplyFilter,
 }: UsersFilterRowProps) {
   const { t } = useTranslation("user");
+
+  const isFirstRender = useRef(true);
+
+  const debouncedFilter = useDebounce(activeFilter, 500);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    onApplyFilter();
+  }, [debouncedFilter, onApplyFilter]);
 
   const genderOptions = [
     {

@@ -76,6 +76,7 @@ export const UserTableWidget = observer(() => {
               columns={USER_TABLE_COLUMNS}
               activeFilter={usersTableStore.activeFilter}
               onFilterChange={usersTableStore.setFilter}
+              onApplyFilter={usersTableStore.applyFilter}
             />
           </thead>
 

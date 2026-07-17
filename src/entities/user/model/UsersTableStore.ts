@@ -107,7 +107,9 @@ export class UsersTableStore {
     }
 
     this.page = 1;
+  }
 
+  applyFilter(): void {
     void this.loadUsers();
   }
 
