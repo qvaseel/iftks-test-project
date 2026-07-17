@@ -27,3 +27,6 @@ export const Input = lazyLoad(() =>
 export const Select = lazyLoad(() =>
   import("./select.tsx").then((m) => ({ default: m.Select })),
 );
+export const Modal = lazyLoad(() =>
+  import("./modal.tsx").then((m) => ({ default: m.Modal })),
+);
