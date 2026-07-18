@@ -17,7 +17,7 @@ export const loadI18n = async () => {
       lng: initialLanguage,
       fallbackLng: "ru",
       backend: {
-        loadPath: "/locales/{{lng}}/{{ns}}.json",
+        loadPath: `${import.meta.env.BASE_URL}locales/{{lng}}/{{ns}}.json`,
       },
       interpolation: { escapeValue: false },
     });
