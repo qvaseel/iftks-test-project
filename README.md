@@ -1,75 +1,99 @@
-# React + TypeScript + Vite
+# Users Table
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Тестовое приложение для просмотра и управления таблицей пользователей на основе [DummyJSON API](https://dummyjson.com/docs/users).
 
-Currently, two official plugins are available:
+Приложение поддерживает серверную пагинацию, сортировку и фильтрацию, изменение ширины колонок, просмотр подробной информации о пользователе и переключение языка интерфейса.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## Возможности
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- загрузка списка пользователей с DummyJSON;
+- серверная пагинация;
+- серверная сортировка;
+- три состояния сортировки:
+  - по возрастанию;
+  - по убыванию;
+  - без сортировки;
 
-## Expanding the ESLint configuration
+- серверная фильтрация по колонкам;
+- задержка перед применением текстового фильтра;
+- изменение ширины колонок;
+- минимальная ширина колонки — `50px`;
+- просмотр подробной информации о пользователе в модальном окне;
+- отдельные состояния загрузки и ошибки для таблицы и модального окна;
+- повторная загрузка данных после ошибки;
+- русский и английский языки;
+- адаптивная вёрстка;
+- управление строками таблицы с клавиатуры.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Стек
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React
+- TypeScript
+- Vite
+- MobX
+- MobX React Lite
+- Tailwind CSS
+- React Router
+- i18next
+- react-i18next
+- Lucide React
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Запуск проекта
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Склонировать репозиторий:
 
+```bash
+git clone https://github.com/qvaseel/iftks-test-project.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Перейти в папку проекта:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cd iftks-test-project
 ```
+
+Установить зависимости:
+
+```bash
+npm install
+```
+
+Запустить приложение в режиме разработки:
+
+```bash
+npm run dev
+```
+
+После запуска приложение будет доступно по адресу, указанному Vite в терминале.
+
+
+## Архитектура
+
+Проект организован с использованием подхода Feature-Sliced Design.
+
+```text
+src/
+├── app/        — инициализация приложения, роутинг и провайдеры
+├── pages/      — страницы приложения
+├── widgets/    — крупные самостоятельные блоки интерфейса
+├── features/   — пользовательские действия и сценарии
+├── entities/   — бизнес-сущности и связанные с ними компоненты
+└── shared/     — переиспользуемые UI-компоненты, API и утилиты
+```
+
+### Основные части приложения
+
+```text
+UsersTableStore
+├── загрузка списка пользователей
+├── пагинация
+├── сортировка
+├── фильтрация
+└── обработка ошибок таблицы
+
+UserModalStore
+├── выбранный пользователь
+├── загрузка подробной информации
+├── состояние модального окна
+└── обработка ошибок модального окна
